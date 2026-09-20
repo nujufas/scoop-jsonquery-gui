@@ -1,42 +1,28 @@
-# Scoop Bucket Template
+# scoop-jsonquery-gui
 
-<!-- Uncomment the following line after replacing placeholders -->
-<!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
+[Scoop](https://scoop.sh) bucket for [jsonquery gui](https://github.com/nujufas/jsonquery_gui), a fast,
+native desktop GUI for browsing and querying large JSON files with jq, JSONPath, JMESPath and JSON Pointer.
 
-Template bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+[![Tests](https://github.com/nujufas/scoop-jsonquery-gui/actions/workflows/ci.yml/badge.svg)](https://github.com/nujufas/scoop-jsonquery-gui/actions/workflows/ci.yml)
+[![Excavator](https://github.com/nujufas/scoop-jsonquery-gui/actions/workflows/excavator.yml/badge.svg)](https://github.com/nujufas/scoop-jsonquery-gui/actions/workflows/excavator.yml)
 
-## How do I use this template?
-
-1. Generate your own copy of this repository with the "Use this template"
-   button.
-2. Allow all GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-   - Select `Allow all actions and reusable workflows`.
-   - Then `Save`.
-3. Workflow permissions:
-   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-   - Ensure `Read repository contents and packages permissions` is selected.
-   - Then `Save`.
-4. Document the bucket in `README.md`.
-5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
-6. Create new manifests by copying `bucket/app-name.json.template` to
-   `bucket/<app-name>.json`.
-7. Commit and push changes.
-8. If you'd like your bucket to be indexed on `https://scoop.sh`, add the
-   topic `scoop-bucket` to your repository.
-
-## How do I install these manifests?
-
-After manifests have been committed and pushed, run the following:
+## Install
 
 ```pwsh
-scoop bucket add <bucketname> https://github.com/<username>/<bucketname>
-scoop install <bucketname>/<manifestname>
+scoop bucket add jsonquery-gui https://github.com/nujufas/scoop-jsonquery-gui
+scoop install jsonquery-gui/jsonquery-gui
 ```
 
-## How do I contribute new manifests?
+Then start it from the Start menu (`jsonquery gui`) or with `jsonquery-gui` in a terminal.
+Update with `scoop update jsonquery-gui`.
 
-To make a new manifest contribution, please read the [Contributing
-Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)
-and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests)
-wiki page.
+The app is a single portable executable and is not code-signed, so Windows SmartScreen may
+warn the first time it runs.
+
+## How this bucket is kept current
+
+The manifest in `bucket/` has `checkver` and `autoupdate` entries, so the Excavator workflow
+(every four hours) picks up each new release of jsonquery gui and commits the new version and
+hash. Bugs in the app belong in the
+[main project](https://github.com/nujufas/jsonquery_gui/issues); problems with this manifest
+(a failed install, a hash error) belong here.
